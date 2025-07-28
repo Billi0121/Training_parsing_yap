@@ -9,9 +9,8 @@
 # c = b + ' How are you'
 # print(c)
 
-from tqdm import tqdm
-from time import sleep
+text1 = 'Its 500 $'
+text2 = 'its 230 $'
 
-if __name__ == '__main__':
-    for i in tqdm(range(2000), desc='First'):
-        sleep(0.003)
+p = (int(text1.split()[1]) + int(text2.split()[1]))
+print(p)
