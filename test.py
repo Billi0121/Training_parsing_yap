@@ -69,12 +69,10 @@ if __name__ == '__main__':
 
     URL = 'https://docs.python.org/3/whatsnew/'
     
-    sessions = requests_cache.CachedSession()
-    response = sessions.get(URL)
+    # sessions = requests_cache.CachedSession()
+    # response = sessions.get(docs)
 
-    soup = BeautifulSoup(response.text, 'lxml')
-
-    main_tag = soup.find(id='what-s-new-in-python')
-    one_tag = main_tag.find_all('div', class_='toctree-wrapper compound')[1]
-    throttle1 = one_tag.find_all('li', class_='toctree-l1')
-    print(throttle1)
+    soup = BeautifulSoup(docs ,'lxml')
+    book = soup.find('div', id='book4')
+    print(book.text)
+    
