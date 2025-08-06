@@ -4,12 +4,12 @@ import requests_cache
 from urllib.parse import urljoin
 from tqdm import tqdm
 
-news = 'https://docs.python.org/3/whatsnew/'
+WHATS_NEW_URL = 'https://docs.python.org/3/whatsnew/'
 DOWNLOADS_URL = 'https://docs.python.org/3/download.html'
 
 if __name__ == '__main__':
     session = requests_cache.CachedSession()
-    response = session.get(news)
+    response = session.get(WHATS_NEW_URL)
     soup = BeautifulSoup(response.text, features='lxml')
 
 
@@ -21,7 +21,7 @@ if __name__ == '__main__':
     for section in tqdm(sections_by_python, desc='Links'):
         version_a_tag = section.find('a')
         href = version_a_tag['href']
-        version_link = urljoin(news, href)
+        version_link = urljoin(WHATS_NEW_URL, href)
         response = session.get(version_link)
         soup = BeautifulSoup(response.text, 'lxml')
         h1 = soup.find('h1')
