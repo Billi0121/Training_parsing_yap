@@ -24,10 +24,11 @@ if __name__ == '__main__':
     Base.metadata.create_all(engine)
     session = Session(engine)   
 
+
+
     # results = session.query(Pep).filter(Pep.pep_number >= 20).delete()
     # session.delete(results)
     # session.commit()
-
 
     # session.query(Pep).update(
     #     {'status': 'Waiting'}
@@ -43,8 +44,20 @@ if __name__ == '__main__':
     
     from sqlalchemy import insert, select, update, delete 
 
-    session.query(Practice_Pep).filter(Practice_Pep.status == 'Rejected').delete()
+    # session.query(Practice_Pep).filter(Practice_Pep.status == 'Rejected').delete()
+    # session.commit()
+
+
+    
+    session.execute(
+        insert(Practice_Pep).values(
+            name = 'Hey',
+            status = 'Active',
+            pep_number = 355
+        )
+    )
     session.commit()
+  
 
     # status = session.query(Practice_Pep).filter(Practice_Pep.status  == 'Final').filter(Practice_Pep.pep_number <= 3311).count()
     # print(status)
